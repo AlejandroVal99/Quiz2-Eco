@@ -1,0 +1,60 @@
+*{
+margin: 0;
+padding: 0;
+font-family: 'Nunito', sans-serif;
+}
+.mainContainer{
+    justify-content: center;
+}
+.container_Tasks{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: auto;
+
+}
+h2{
+    text-align: center;
+}
+.columnTask{
+    width: 30%;
+    margin: 20px auto;
+}
+.container_Newtask {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+}
+.container_Newtask *{
+    margin: 8px;
+}
+
+.taskComponent{
+    justify-content: center;
+    padding: 16px;
+    margin: 10px;
+    background-color: lightblue;
+    border-radius: 10%;
+    border-color: cornflowerblue;
+}
+.button{
+    width: 10px;
+    height: 10px;
+    margin: 3px;
+    border-radius: 8%;
+}
+input, button{
+    padding: 8px;
+   
+}
+.btnGoUp{
+    background-color: mediumblue;
+}
+.btnGoDown{
+    background-color: yellow;
+}
+.btnGoRemove{
+    background-color: red;
+}

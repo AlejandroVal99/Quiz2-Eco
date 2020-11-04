@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAV task</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class = "mainContainer">
+
+        <div class = "container_Newtask">
+            <h1>JAV task</h1>
+            <p> Agrega una nueva tarea </p>
+            <input class = "input" id = "descriptionTask" placeholder = "Descripcion de la tarea" type="text">
+            <button class = "buttonNtask" id="btnNewTask">Nueva tarea</button>
+        </div>
+
+        <div class = "container_Tasks">
+         
+            <div id = "container_taskToDo" class = "columnTask">
+           
+            </div>
+            <div id = "container_taskDoing" class = "columnTask">
+                
+
+            </div>
+            <div id = "container_taskDone" class = "columnTask">
+               
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase.js"></script>
+
+<script>
+ 
+  var firebaseConfig = {
+    apiKey: "AIzaSyBv5nWjRCtx9EXQkcjd3zy5Dk7y8ZQJsRI",
+    authDomain: "pruebaeco-ce227.firebaseapp.com",
+    databaseURL: "https://pruebaeco-ce227.firebaseio.com",
+    projectId: "pruebaeco-ce227",
+    storageBucket: "pruebaeco-ce227.appspot.com",
+    messagingSenderId: "831118328954",
+    appId: "1:831118328954:web:62ebbdb004ad16fa7f27c3",
+    measurementId: "G-RJ2VC07CBE"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>const database = firebase.database();  </script>
+
+<script src="components/task.js"></script>
+<script src = "js/index.js"></script>
