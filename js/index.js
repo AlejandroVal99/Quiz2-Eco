@@ -7,8 +7,7 @@ const container_taskDone = document.getElementById("container_taskDone");
 
 addNewTask = () => {
     if (inputDescripTask.value === "") {
-        alert("No tienes la descripcion de la tarea")
-       ;
+        alert("No tienes la descripcion de la tarea");
     } else {
 
         let d = inputDescripTask.value;
