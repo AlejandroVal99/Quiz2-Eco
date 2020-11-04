@@ -3,8 +3,97 @@ class Task {
         this.task = task;
     }
 
+    goDown = () => {
+
+        let state = this.task.state;
+        let id = this.task.id;
+        database.ref('tasks/tasks' + state + '/' + id).set(null);
+
+        if (state === "Doing") {
+
+            let i = this.task.id;
+            let t = this.task.date;
+            let s = 'ToDo'
+            let d = this.task.description;
+
+
+            let newTaskToDo = {
+                id: i,
+                date: t,
+                state: s,
+                description: d,
+            }
+
+            database.ref('tasks/tasksToDo/' + i).set(newTaskToDo);
+
+        } else {
+
+            let i = this.task.id;
+            let t = this.task.date;
+            let s = 'Doing'
+            let d = this.task.description;
+
+
+            let newTaskDoing = {
+                id: i,
+                date: t,
+                state: s,
+                description: d,
+            }
+
+            database.ref('tasks/tasksDoing/' + i).set(newTaskDoing);
+        }
+    }
+    goUp = () => {
+        let state = this.task.state;
+        let id = this.task.id;
+        database.ref('tasks/tasks' + state + '/' + id).set(null);
+        console.log("Mi estado actual: " + this.task.state);
+
+        if (state === "ToDo") {
+
+            let i = this.task.id;
+            let t = this.task.date;
+            let s = 'Doing'
+            let d = this.task.description;
+
+
+            let newTaskDoing = {
+                id: i,
+                date: t,
+                state: s,
+                description: d,
+            }
+
+            database.ref('tasks/tasksDoing/' + i).set(newTaskDoing);
+        } else {
+
+            let i = this.task.id;
+            let t = this.task.date;
+            let s = 'Done'
+            let d = this.task.description;
+
+
+            let newTaskDone = {
+                id: i,
+                date: t,
+                state: s,
+                description: d,
+            }
+
+            database.ref('tasks/tasksDone/' + i).set(newTaskDone);
+        }
+    }
+    goRemove = () => {
+
+        let state = this.task.state;
+        let id = this.task.id;
+        database.ref('tasks/tasks' + state + '/' + id).set(null);
+
+    }
 
     render = () => {
+
         let taskComponent = document.createElement('div');
         taskComponent.className = "taskComponent";
 
@@ -50,103 +139,11 @@ class Task {
                 break;
         }
 
+        btnGoDown.addEventListener('click',this.goDown);
+        btnGoUp.addEventListener('click', this.goUp);
+        btnGoRemove.addEventListener('click',this.goRemove);
 
-
-
-        btnGoDown.addEventListener('click', () => {
-
-            let state = this.task.state;
-            let id = this.task.id;
-            database.ref('tasks/tasks' + state + '/' + id).set(null);
-
-            if (state === "Doing") {
-
-                let i = this.task.id;
-                let t = this.task.date;
-                let s = 'ToDo'
-                let d = this.task.description;
-
-
-                let newTaskToDo = {
-                    id: i,
-                    date: t,
-                    state: s,
-                    description: d,
-                }
-
-                database.ref('tasks/tasksToDo/' + i).set(newTaskToDo);
-
-            } else {
-
-                let i = this.task.id;
-                let t = this.task.date;
-                let s = 'Doing'
-                let d = this.task.description;
-
-
-                let newTaskDoing = {
-                    id: i,
-                    date: t,
-                    state: s,
-                    description: d,
-                }
-
-                database.ref('tasks/tasksDoing/' + i).set(newTaskDoing);
-            }
-        });
-
-
-
-        btnGoUp.addEventListener('click', () => {
-            let state = this.task.state;
-            let id = this.task.id;
-            database.ref('tasks/tasks' + state + '/' + id).set(null);
-            console.log("Mi estado actual: " + this.task.state);
-
-            if (state === "ToDo") {
-
-                let i = this.task.id;
-                let t = this.task.date;
-                let s = 'Doing'
-                let d = this.task.description;
-
-
-                let newTaskDoing = {
-                    id: i,
-                    date: t,
-                    state: s,
-                    description: d,
-                }
-
-                database.ref('tasks/tasksDoing/' + i).set(newTaskDoing);
-            } else {
-
-                let i = this.task.id;
-                let t = this.task.date;
-                let s = 'Done'
-                let d = this.task.description;
-
-
-                let newTaskDone = {
-                    id: i,
-                    date: t,
-                    state: s,
-                    description: d,
-                }
-
-                database.ref('tasks/tasksDone/' + i).set(newTaskDone);
-            }
-        });
-
-        btnGoRemove.addEventListener('click', () => {
-
-            let state = this.task.state;
-            let id = this.task.id;
-            database.ref('tasks/tasks' + state + '/' + id).set(null);
-
-        });
-
-
+        //
         taskComponent.addEventListener('drop', function (event) {
             console.log(event.target.id);
             let dragged;
